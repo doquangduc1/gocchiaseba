@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('public.admin.products.index');
+    return view('admin.products.index');
 });
 //Route::get('admin.index', ['as' => 'admin.index', 'uses' => 'UserController@index']);
 Route::group(['prefix'=>'admin'],function() {
