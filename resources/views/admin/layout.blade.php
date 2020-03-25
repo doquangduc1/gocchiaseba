@@ -95,7 +95,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-
+    </div>
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
