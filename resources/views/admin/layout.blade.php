@@ -98,16 +98,18 @@
     </div>
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- page script -->
+        <script type="text/javascript" src="<?php echo asset('css/jsgrid/demos/db.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('css/jquery/jquery.min.js'); ?>"></script>
+    <!-- Bootstrap 4 -->
+    <script type="text/javascript" src="<?php echo asset('css/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+    <!-- DataTables -->
+    <script type="text/javascript" src="<?php echo asset('css/datatables/jquery.dataTables.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('css/plugins/datatables-bs4/js/dataTables.bootstrap4.js'); ?>"></script>
+    <!-- AdminLTE App -->
+    <script type="text/javascript" src="<?php echo asset('css/dist/js/adminlte.min.js'); ?>"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script type="text/javascript" src="<?php echo asset('css/dist/js/demo.js'); ?>"></script>
+    <!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable();
