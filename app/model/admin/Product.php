@@ -1,8 +1,7 @@
 <?php
-
-namespace App;
-
+namespace App\model\admin;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent;
 use Cviebrock\EloquentSluggable\Sluggable;
 class Product extends Model
 {

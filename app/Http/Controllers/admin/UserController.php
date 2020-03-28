@@ -1,24 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Blog;
 use Illuminate\Http\Request;
-
-class BlogController extends Controller
+    use App\Http\Controllers\Controller;
+    use App\model\admin\User;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
-        return view('admin.blog.index');
+        return view('admin.user.login');
     }
-    public function add()
+    public function register()
     {
-        return view('admin.blog.add');
+        return view('admin.user.register');
+    }
+    public function layout()
+    {
+        return view('admin.layout');
     }
     /**
      * Show the form for creating a new resource.
@@ -27,7 +31,12 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        return view('admin.user.create');
+    }
+
+    public function index()
+    {
+        return view('admin.user.index');
     }
 
     /**
@@ -44,10 +53,10 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
         //
     }
@@ -55,10 +64,10 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +76,10 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +87,10 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
         //
     }

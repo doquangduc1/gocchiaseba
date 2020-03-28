@@ -1,10 +1,8 @@
 <?php
-
-namespace App\Http\Controllers;
-
-use App\News;
+namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\model\admin\News;
 class NewsController extends Controller
 {
     /**

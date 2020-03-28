@@ -1,10 +1,8 @@
 <?php
-
-namespace App\Http\Controllers;
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use App\Product;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Redirect;
+    namespace App\Http\Controllers\admin;
+    use Illuminate\Http\Request;
+    use App\Http\Controllers\Controller;
+    use App\model\admin\Product;
 class ProductController extends Controller
 {
     /**
@@ -56,7 +54,7 @@ class ProductController extends Controller
 
         Product::insertGetId($insert);
 
-        return Redirect::to('products')
+        return Redirect::to('model/admin/products')
             ->with('success','Greate! posts created successfully.');
     }
 
