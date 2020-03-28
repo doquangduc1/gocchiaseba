@@ -11,6 +11,7 @@ class Product extends Model
         'slug',
         'detail',
     ];
+    protected $table = 'products';
     protected $sluggable = array(
         'build_from' => 'name', //Xây dựng đường dẫn từ trường 'name'
         'save_to'   => 'slug'   //Lưu tên đường dẫn vào trường 'slug'
