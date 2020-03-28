@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('blog.add')}}"class="nav-link">
+            <a href="{{ route('blog.create')}}"class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm blog</p>
             </a>

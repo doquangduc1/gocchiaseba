@@ -162,8 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Botble\Assets\Providers\AssetsServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        // Botble\Assets\Providers\AssetsServiceProvider::class,
+
+
         /*
          * Package Service Providers...
          */
@@ -228,7 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Assets' => Botble\Assets\Facades\AssetsFacade::class,
+        // 'Assets' => Botble\Assets\Facades\AssetsFacade::class,
 
 
 

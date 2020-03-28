@@ -14,8 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $Blog = Blog::latest()->paginate(5);
-        return view('admin.blog.index', compact('Blog'))
+        $blog = Blog::latest()->paginate(5);
+        return view('admin.blog.index', compact('blog'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function create()
@@ -41,7 +41,13 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+        Blog::create($request->all());
+        return redirect()->route('blog.index')
+                        ->with('success','blog created successfully.');
     }
 
     /**
@@ -63,7 +69,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('admin.blog.edit',compact('blog'));
     }
 
     /**
@@ -75,7 +81,13 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+        $blog->update($request->all());
+        return redirect()->route('blog.index')
+                        ->with('success','blog updated successfully');
     }
 
     /**
@@ -86,6 +98,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return redirect()->route('blog.index')
+                        ->with('success','Product deleted successfully');
     }
 }

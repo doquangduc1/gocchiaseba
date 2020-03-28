@@ -23,6 +23,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
 <link  href="<?php echo asset('css/main.css')?>" type="text/css" rel="stylesheet">
+
 </head>
 <body>
 <div class="hold-transition sidebar-mini">
@@ -31,8 +32,8 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
-                <img src="../css/dist/img/AdminLTELogo.png"
+            <a href="{{ route('products.index')}}" class="brand-link">
+                <img src="{!! asset('css/dist/img/AdminLTELogo.png ') !!}"
                      alt="AdminLTE Logo"
                      class="brand-image img-circle elevation-3"
                      style="opacity: .8">
@@ -43,7 +44,7 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../css/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="{!! asset('css/dist/img/user2-160x160.jpg') !!}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Đỗ Quang Đức</a>
@@ -84,10 +85,12 @@
                   @yield('content')
                     <!-- /.card-body -->
                 </div>
+
                 <!-- /.card -->
             </section>
             <!-- /.content -->
         </div>
+
         <!-- /.content-wrapper -->
 @include('admin.footer')
         <!-- Control Sidebar -->
@@ -96,8 +99,30 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+            <!-- jQuery -->
+    <!-- Bootstrap 4 -->
+{{--    <script type="text/javascript" src="<?php echo asset('css/jquery/jquery.min.js'); ?>"></script>--}}
+{{--    <script type="text/javascript" src="<?php echo asset('css/jquery-ui/jquery-ui.js'); ?>"></script>--}}
+{{--    <script type="text/javascript" src="<?php echo asset('css/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>--}}
+{{--    <!-- jsGrid -->  <script type="text/javascript" src="<?php echo asset('css/jsgrid/jsgrid.js'); ?>"></script>--}}
+
+{{--    <script type="text/javascript" src="<?php echo asset('css/jsgrid/jsgrid.min.js'); ?>"></script>--}}
+{{--    <script type="text/javascript" src="<?php echo asset('css/dist/js/adminlte.min.js'); ?>"></script>--}}
+{{--    <script type="text/javascript" src="<?php echo asset('css/dist/js/demo.js'); ?>"></script>--}}
+{{--    <script type="text/javascript" src="<?php echo asset('css/datatables/jquery.dataTables.js'); ?>"></script>--}}
+{{--    <script>--}}
+{{--        $(function () {--}}
+{{--            $("#example1").DataTable();--}}
+{{--            $('#example2').DataTable({--}}
+{{--                "paging": true,--}}
+{{--                "lengthChange": false,--}}
+{{--                "searching": false,--}}
+{{--                "ordering": true,--}}
+{{--                "info": true,--}}
+{{--                "autoWidth": false,--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
         <script type="text/javascript" src="<?php echo asset('css/jsgrid/demos/db.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo asset('css/jquery/jquery.min.js'); ?>"></script>
     <!-- Bootstrap 4 -->
@@ -110,19 +135,23 @@
     <!-- AdminLTE for demo purposes -->
     <script type="text/javascript" src="<?php echo asset('css/dist/js/demo.js'); ?>"></script>
     <!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
-</script>
+{{--    <script>--}}
+{{--        $(function () {--}}
+{{--            $("#example1").DataTable();--}}
+{{--            $('#example2').DataTable({--}}
+{{--                "paging": true,--}}
+{{--                "lengthChange": false,--}}
+{{--                "searching": false,--}}
+{{--                "ordering": true,--}}
+{{--                "info": true,--}}
+{{--                "autoWidth": false,--}}
+{{--            });--}}
+{{--        });--}}
+{{--        </script>--}}
+    <!-- page script -->
+</div>
+
 
 </body>
 </html>
+
