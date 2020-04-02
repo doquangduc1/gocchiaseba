@@ -36,10 +36,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct(ActivationService $activationService)
+    public function __construct( )
     {
         $this->middleware('guest')->except('logout');
-        $this->activationService = $activationService;
     }
     public function getLogin() {
         return view('admin.user.login');
