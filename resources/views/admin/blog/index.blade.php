@@ -48,7 +48,7 @@
  @include('admin.blog.leftforblog')
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link active">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <i class="nav-icon fas fa-edit"></i>
         <p>BLOG<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
@@ -89,16 +89,16 @@
                     <th>Tùy chọn</th>
                 </tr>
                 </thead>
-                @foreach ($blog as $blogs)
+                @foreach ($blog as $a)
                 <tbody>
                 <tr>
                     <td>{{ ++$i }}</td>
-                    <td>{{ $blogs ->name }}</td>
-                    <td>{{ $blogs ->detail }}</td>
+                    <td>{{ $a ->name }}</td>
+                    <td>{{ $a ->detail }}</td>
                     <td>
-                        <form action="{{ route('blog.destroy',$blogs->id) }}" method="POST">
+                        <form action="{{ route('blog.destroy',$a->id) }}" method="POST">
                             {{-- <a class="btn btn-info" href="{{ route('products.show',$product->id) }}"></a> --}}
-                            <a class="btnindex  glyphicon glyphicon-edit" id="hover"  href="{{ route('blog.edit',$blogs->id) }}"><span>Sửa</span></a>
+                            <a class="btnindex  glyphicon glyphicon-edit" id="hover"  href="{{ route('blog.edit',$a->id) }}"><span>Sửa</span></a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btnindex fa fa-trash"id="hover"><span>Xóa</span> </button>

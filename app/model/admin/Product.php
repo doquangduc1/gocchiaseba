@@ -3,14 +3,21 @@ namespace App\model\admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent;
 use Cviebrock\EloquentSluggable\Sluggable;
-class Product extends Model
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+class Product extends Model implements Authenticatable
 {
-
+    use AuthenticableTrait;
     protected $fillable = [
         'name',
+        'gia',
+        'loaisp',
         'slug',
-        'detail',
+        'image',
+
     ];
+    public $timestamps = true;
     protected $table = 'products';
     protected $sluggable = array(
         'build_from' => 'name', //Xây dựng đường dẫn từ trường 'name'
@@ -23,5 +30,9 @@ class Product extends Model
                 'source' => 'title'
             ]
         ];
+    }
+    public function productsimage()
+    {
+        return $this->hasMany('App\model\admin\Productsimage');
     }
 }

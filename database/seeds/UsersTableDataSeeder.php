@@ -11,8 +11,21 @@ class UsersTableDataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('blog')->insert([
-            'name' => 'duc'.str_random(10).'duc',
-            'detail' => str_random(10),           ]);
-    }
+        $data = [
+            [
+                'name' => 'lxc150896@gmail.com',
+                'email' => 'lxc150896@gmail.com',
+                'password' => bcrypt('12345'),
+            ],
+            ['name' => 'lxc150896@gmail.com',
+                'email' => 'lxc@gmail.com',
+                'password' => bcrypt('12345'),
+            ],
+            ['name' => 'lxc150896@gmail.com',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('12345'),
+            ],
+        ];
+        DB::table('users')->insert($data);
+}
 }

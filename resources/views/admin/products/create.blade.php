@@ -41,11 +41,11 @@
             color: #ff6666;
         }
     </style>
-@extends('admin.layout')
+@extends('admin.products.layout')
 @section('active')
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-th"></i>
             <p>Sản Phẩm<i class="right fas fa-angle-left"></i></p>
         </a>
         <ul class="nav nav-treeview">
@@ -61,99 +61,95 @@
                     <p>Thêm sản phẩm</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Sửa sản phẩm</p>
-                </a>
-            </li>
         </ul>
     </li>
     @include('admin.products.leftforproduct')
     @include('admin.products.leftforprodbyblog')
 @endsection
 @section('content')
+<div class="col-md-12">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Thêm mới sản phẩm</h3>
+            <h3 class="card-title">Tạo mới</h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fas fa-minus"></i>
+            </button>
+            </div>
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form role="form" id="form">
-            <div class="card-body">
-                <div class="form-group">
-                    <label >Tên sản phẩm</label>
-                    <input type="text" class="form-control form-control-lg name "  id ="name" name ="name"  placeholder="Nhập tên sản phẩm" required>
-                </div>
-                <div class="form-group">
-                    <label >Giá</label>
-                    <input type="text" class="form-control form-control-lg"   name ="price"  placeholder="Nhập giá" >
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Loại sản phẩm</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Upload</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-            </div>
-            <!-- /.card-body -->
-
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form role="form" id="form"action="{{ route('products.store') }}" enctype="multipart/form-data" method="POST" >
+    @csrf
+    <div class="card-body">
+        <div class="form-group">
+        <label for="inputName">Tên sản phẩm </label>
+        <input type="text" id="inputName" name="name"class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="inputDescription">Miêu tả</label>
+        <textarea name="detail"id="inputDescription" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-8 float-md-left">
+    <div class="form-group">
+        <label for="inputStatus">Loại sản phẩm</label>
+        <select name="loaisp" class="form-control custom-select">
+            <option selected disabled>Select one</option>
+            <option value="0">Giáo trình</option>
+            <option value="1">Đồ Cá Nhân</option>
+            <option value="1">Đồ Ăn</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="inputClientCompany">Giá</label>
+        <input name="gia"type="number" id="inputClientCompany" class="form-control">
+    </div>
+    <div class="form-group">
+        <strong>Ảnh :</strong>
+            <input type="file" id="inputFile" cept="image/*" onchange="preview_image(event) " class="form-control box-image" name="image">
     </div>
 
-@endsection
-<script>
-$().ready(function() {
-$("#form").validate({
-onfocusout: false,
-onkeyup: false,
-onclick: false,
-rules: {
-"name": {
-required: true,
-maxlength: 1
-},
-"password": {
-required: true,
-minlength: 8
-},
-"re-password": {
-equalTo: "#password",
-minlength: 8
+    </div>
+    <div class=" float-md-right col-md-3">
+        <img id="output_image"alt="" class="img-circle" src="#"  style="width: 300px; height: 300px"/>
+                </div>
+</div>
 
-}
-},
-messages: {
-"name": {
-required: "Bắt buộc nhập username",
-maxlength: "Hãy nhập tối đa 15 ký tự"
-},
-"password": {
-required: "Bắt buộc nhập password",
-minlength: "Hãy nhập ít nhất 8 ký tự"
-},
-"re-password": {
-equalTo: "Hai password phải giống nhau",
-minlength: "Hãy nhập ít nhất 8 ký tự"
-}
-}
-});
-});
+    </div><!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+
+@endsection
+<!-- /.card -->
+@section('button')
+<div class="row">
+    <div class="col-12">
+    <a href="{{ route('products.index')}}" class="btn btn-secondary">Cancel</a>
+    <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+    </div>
+</div>
+</form>
+@endsection
+
+<script type='text/javascript'>
+    function preview_image(event)
+    {
+        var reader = new FileReader();
+        reader.onload = function()
+        {
+            var output = document.getElementById('output_image');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
 </script>

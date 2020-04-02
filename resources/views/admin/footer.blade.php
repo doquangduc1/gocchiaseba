@@ -5,3 +5,16 @@
     <strong>Copyright &copy; 2014-2019 <a href="#">Đỗ Qunag Đức</a>.</strong> All rights
     reserved.
 </footer>
+<script>
+    $(function() {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>

@@ -1,6 +1,6 @@
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <i class="nav-icon fas fa-th"></i>
         <p>Sản phẩm<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
@@ -16,17 +16,17 @@
                 <p>Thêm sản phẩm</p>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="{{ route('products.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Sửa sản phẩm</p>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </li>
-<li class="nav-item has-treeview">
+<li class="nav-icon nav-item has-treeview">
     <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <i class="nav-icon fa fa-fw fa-user"></i>
         <p>Tài khoán<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
@@ -42,11 +42,11 @@
                 <p>Thêm tài khoản</p>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="../../index3.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Sửa tài khoản</p>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </li>

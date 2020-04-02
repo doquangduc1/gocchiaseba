@@ -3,11 +3,16 @@
     namespace App\model\admin;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Database\Eloquent\Model;
+class User  extends Model implements Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -15,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    use AuthenticableTrait;
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -36,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
 }

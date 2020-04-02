@@ -47,7 +47,7 @@
                         <img src="{!! asset('css/dist/img/user2-160x160.jpg') !!}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Đỗ Quang Đức</a>
+                        <a href="#" class="d-block"><?php echo $user = Auth::user()-> name; ?></a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->

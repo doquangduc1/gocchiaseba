@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login V9</title>
+<title>Đăng Nhập</title>
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,19 +22,50 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}" >
 <link rel="stylesheet"  href="<?php echo asset('css/mainlogin.css')?>">
 </head>
+<?php //Hiển thị thông báo thành công?>
+@if ( Session::has('success') )
+	<div class="alert alert-success alert-dismissible" role="alert">
+		<strong>{{ Session::get('success') }}</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+	</div>
+@endif
+<?php //Hiển thị thông báo lỗi?>
+@if ( Session::has('error') )
+	<div class="alert alert-danger alert-dismissible" role="alert">
+		<strong>{{ Session::get('error') }}</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+	</div>
+@endif
+@if(count($errors)>0)
+<div class="alert alert-danger">
+        @foreach($errors ->all() as $err)
+            {{$err}}<br>
+            @endforeach
+</div>
+@endif
+@if(session('thongbao'))
+    {{session('thongbao')}}
+@endif
 <body>
 <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
 <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-<form class="login100-form validate-form">
-<span class="login100-form-title p-b-37">
-Đăng nhập
-</span>
+<form class="login100-form validate-form" action="{{route('login')}}"  method="POST">
+    @csrf
+    {!! csrf_field() !!}
+    @method('POST')
+<span class="login100-form-title p-b-37">Đăng nhập</span>
 <div class="wrap-input100 validate-input m-b-20" data-validate="Nhập tên người dùng hoặc email">
-<input class="input100" type="text" name="Nhập tên người dùng" placeholder="Nhập tên người dùng hoặc email">
+<input class="input100" type="text" name="email" placeholder="Nhập tên người dùng hoặc email">
 <span class="focus-input100"></span>
 </div>
 <div class="wrap-input100 validate-input m-b-25" data-validate="Nhập mật khẩu">
-<input class="input100" type="password" name="pass" placeholder="Mật khẩu">
+<input class="input100" type="password" name="password" placeholder="Mật khẩu">
 <span class="focus-input100"></span>
 </div>
 <div class="container-login100-form-btn">
@@ -43,7 +74,7 @@
 </button>
 </div>
 <div class="text-center p-t-57 p-b-20">
-<span class="txt1">
+{{-- <span class="txt1">
 Hoặc đăng nhập bằng
 </span>
 </div>
@@ -55,8 +86,8 @@ Hoặc đăng nhập bằng
 <img src="img/icons/icon-google.png" alt="GOOGLE">
 </a>
 </div>
-<div class="text-center">
-<a href="#" class="txt2 hov1">
+<div class="text-center"> --}}
+<a href="{{route('register')}}" class="txt2 hov1">
 Đăng kí
 </a>
 </div>
