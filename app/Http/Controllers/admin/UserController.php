@@ -1,21 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use App\model\admin\User;
+    use Session;
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function login()
-    {
-        return view('admin.user.login');
+    public function __construct() {
+        $this->middleware('auth');
     }
+
+    // public function login()
+    // {
+    //     return view('admin.user.login');
+    // }
     public function register()
     {
         return view('admin.user.register');
@@ -36,7 +43,9 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('admin.user.index');
+        $user = User::latest()->paginate(5);
+        return view('admin.user.index', compact('user'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -47,7 +56,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'email' => 'required',
+        ]);
+        User::create($request->all());
+        return redirect()->route('user.index')
+                        ->with('success','user created successfully.');
     }
 
     /**
@@ -67,31 +83,40 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User  $user)
     {
-        //
+        return view('admin.user.edit',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User  $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'email' => 'required',
+        ]);
+        $user->update($request->all());
+        return redirect()->route('user.index')
+                        ->with('success','user updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User  $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index')
+                        ->with('success','User deleted successfully');
     }
 }

@@ -3,6 +3,7 @@
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use App\model\admin\Product;
+
 class ProductController extends Controller
 {
     /**
@@ -10,17 +11,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function index()
-//    {
-//        $products = Product::latest()->paginate(5);
-//        return view('products.index',compact('products'))
-//            ->with('i', (request()->input('page', 1) - 1) * 5);
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-//        $data['products'] = product::orderBy('id','desc')->paginate(10);,$data
-    $products = Product::latest()->paginate(5);
-        return view('admin.products.index',compact('products'))
+        $product = Product::latest()->paginate(5);
+        return view('admin.products.index', compact('product'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -42,43 +40,63 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+        $fileName = '';
+       if($request->hasFile('image')){
+           $file = $request->file('image');
+           $fileName = $file->getClientOriginalName();
+           $file->move('img/', $fileName);
+       }
+       $this->validate($request,
+       [
+           //Kiểm tra giá trị rỗng
+           'name' => 'required',
+           'detail' => 'required',
+           'loaisq' => 'required',
+           'gia' => 'required',
+       ],
+       [
+           //Tùy chỉnh hiển thị thông báo
+           'name.required' => 'Bạn chưa nhập tên sản phẩm!',
+           'detail.required' => 'Bạn chưa nhập miêu tả!',
+           'loaisq.required' => 'Bạn chưa chọn khối!',
+           'gia.required' => 'Bạn chưa chọn khối!',
+       ]
+   );
+
+       $product = new Product();
+        $product->insert([
+            'name' => $request->input('name'),
+            'detail' => $request->input('detail'),
+            'image' => $fileName,
+            'loaisp' => $request->input('loaisp'),
+            'gia' => $request->input('gia'),
+
         ]);
-
-        $insert = [
-            'slug' => SlugService::createSlug(Product::class, 'slug', $request->name),
-            'name' => $request->name,
-            'detail' => $request->detail,
-        ];
-
-        Product::insertGetId($insert);
-
-        return Redirect::to('model/admin/products')
-            ->with('success','Greate! posts created successfully.');
+        return redirect()->route('products.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Product  $products
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        //
+        $product = Product::findOrFail();
+        return view('products.show',compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     *@param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -90,8 +108,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'loaisp' => 'required',
+        ]);
+        $product->update([
+            'name' => $request->input('name'),
+            'loaisp' => $request->input('loaisp'),
+            'gia' => $request->input('gia'),
+        ]);
+        return redirect()->route('products.index')
+            ->with('success', 'Product updated successfully');
+
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -101,6 +131,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index')
+                        ->with('success','Product deleted successfully');
     }
 }
+
+
+
