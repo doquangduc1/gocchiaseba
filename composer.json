@@ -14,6 +14,8 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.5",
+        "jakub-onderka/php-console-color": "^0.2.0",
+        "jakub-onderka/php-console-highlighter": "^0.4.0",
         "laravel/framework": "^7.0",
         "laravel/helpers": "^1.2",
         "laravel/tinker": "^2.0",
