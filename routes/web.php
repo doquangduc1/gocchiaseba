@@ -47,8 +47,8 @@ Route::group(['prefix' => 'index'], function () {
     Route::resource('review', 'index\ReviewController');
     Route::resource('ad', 'index\AdController');
     Route::resource('document', 'index\DocumentController');
+    Route::resource('teacher', 'index\TeacherController');
+    //Route::resource('review.edit', ['as' => 'review.edit', 'uses' => 'index\ReviewController@edit']);
 });
 
 
-Route::get('/upload', 'UploadController@uploadForm');
-Route::post('/upload', 'UploadController@uploadSubmit');

@@ -101,9 +101,9 @@
                     <td>{{ $products ->name }}</td>
                     <td>{{ $products ->loaisp }}</td>
                     <td>{{ $products ->gia }}</td>
-                    @foreach($products->productsimage as $image)
-                    <td> <img src="{{asset('img/'.$image->image)}}"  style="width: 50px; height: auto"  /> </td>
-@endforeach
+                    {{-- @foreach($products->productsimage as $image) --}}
+                    <td> <img src="{{asset('img/'.$products->image)}}"  style="width: 50px; height: auto"  /> </td>
+{{-- @endforeach --}}
 
                     <td>
                         <form action="{{ route('products.destroy',$products->id) }}" method="POST">

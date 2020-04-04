@@ -370,8 +370,7 @@
                                                         href="http://mendel-antiques.ancorathemes.com/product-tag/chair/"
                                                         rel="tag">chair</a></div>
                                                 <h2 class="woocommerce-loop-product__title"><a
-                                                        href="http://mendel-antiques.ancorathemes.com/product/antique-chair-1734/">Antique
-                                                    Chair 1734</a></h2>
+                                                        href="http://mendel-antiques.ancorathemes.com/product/antique-chair-1734/">trung123</a></h2>
                                                 <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
                                                     <span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span>
                                                 </div>
@@ -410,7 +409,7 @@
                                                 aria-hidden="true" class="shop_link button icon-link"></a>
                                         </div>
                                     </div><!-- /.post_featured -->
-                                    <div class="post_data">
+                            @foreach($blog as $blogs)<div class="post_data">
                                         <div class="post_data_inner">
                                             <div class="post_header entry-header">
                                                 <div class="post_tags product_tags"><a
@@ -418,15 +417,15 @@
                                                         rel="tag">antique</a>, <a
                                                         href="http://mendel-antiques.ancorathemes.com/product-tag/armchair/"
                                                         rel="tag">armchair</a></div>
-                                                <h2 class="woocommerce-loop-product__title"><a
-                                                        href="http://mendel-antiques.ancorathemes.com/product/vintage-red-armchair/">Vintage
-                                                    Red Armchair</a></h2>
+                            
+                                                        <h2 class="woocommerce-loop-product__title"><a
+                                                        href="http://mendel-antiques.ancorathemes.com/product/vintage-red-armchair/">{{ $blogs ->name }}</a></h2>
                                                 <div class="star-rating" role="img" aria-label="Rated 1.00 out of 5">
                                                     <span style="width:20%">Rated <strong class="rating">1.00</strong> out of 5</span>
                                                 </div>
-                                            </div><!-- /.post_header -->
+                              </div><!-- /.post_header -->
 
-                                            <span class="price"><span class="woocommerce-Price-amount amount"><span
+                                                <span class="price"><span class="woocommerce-Price-amount amount"><span
                                                     class="woocommerce-Price-currencySymbol">&#36;</span>700<span
                                                     class="decimals">00</span></span> &ndash; <span
                                                     class="woocommerce-Price-amount amount"><span
@@ -437,8 +436,8 @@
                                                data-product_id="259" data-product_sku=""
                                                aria-label="Select options for &ldquo;Vintage Red Armchair&rdquo;"
                                                rel="nofollow">add to cart</a></div><!-- /.post_data_inner -->
-                                    </div><!-- /.post_data -->
-                                </div><!-- /.post_item -->
+                           </div><!-- /.post_data -->
+                           @endforeach   </div><!-- /.post_item -->
                             </li>
                             <li class=" column-1_2 product type-product post-253 status-publish first instock product_cat-drawers product_tag-dresser product_tag-gold product_tag-silver product_tag-wooden has-post-thumbnail shipping-taxable purchasable product-type-simple">
                                 <div class="post_item post_layout_thumbs">
@@ -463,7 +462,7 @@
                                                 aria-hidden="true" class="shop_link button icon-link"></a>
                                         </div>
                                     </div><!-- /.post_featured -->
-
+                                    
 @foreach($blog as $blogs)
                                     <div class="post_data">
                                         <div class="post_data_inner">

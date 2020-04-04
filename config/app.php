@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Botble\Assets\Providers\AssetsServiceProvider::class,
-//         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         /*
          * Package Service Providers...
          */

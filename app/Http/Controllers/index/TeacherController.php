@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\index;
 
 use App\Http\Controllers\Controller;
-use App\model\index\Review;
-use Illuminate\Http\Request;
 use App\model\index\Teacher;
-class ReviewController extends Controller
+use Illuminate\Http\Request;
+
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        
-        return view('index.review.index');
+        $teacher = Teacher::latest()->paginate(5);
+        return view('index.teacher.index', compact('teacher'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -28,7 +29,7 @@ class ReviewController extends Controller
     {
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,10 +44,10 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\index\Review  $review
+     * @param  \App\model\index\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show(Teacher $teacher)
     {
         //
     }
@@ -54,22 +55,22 @@ class ReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\index\Review  $review
+     * @param  \App\model\index\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $review)
+    public function edit(Teacher $teacher)
     {
-       //
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\index\Review  $review
+     * @param  \App\model\index\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, Teacher $teacher)
     {
         //
     }
@@ -77,10 +78,10 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\index\Review  $review
+     * @param  \App\model\index\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(Teacher $teacher)
     {
         //
     }

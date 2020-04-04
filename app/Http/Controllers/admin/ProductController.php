@@ -46,22 +46,9 @@ class ProductController extends Controller
            $fileName = $file->getClientOriginalName();
            $file->move('img/', $fileName);
        }
-       $this->validate($request,
-       [
-           //Kiểm tra giá trị rỗng
-           'name' => 'required',
-           'detail' => 'required',
-           'loaisq' => 'required',
-           'gia' => 'required',
-       ],
-       [
-           //Tùy chỉnh hiển thị thông báo
-           'name.required' => 'Bạn chưa nhập tên sản phẩm!',
-           'detail.required' => 'Bạn chưa nhập miêu tả!',
-           'loaisq.required' => 'Bạn chưa chọn khối!',
-           'gia.required' => 'Bạn chưa chọn khối!',
-       ]
-   );
+       
+       
+   
 
        $product = new Product();
         $product->insert([

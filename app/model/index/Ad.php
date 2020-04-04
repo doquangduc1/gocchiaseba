@@ -11,3 +11,5 @@ class Ad extends Model
     ];
     protected $table = 'blog';
 }
+
+
