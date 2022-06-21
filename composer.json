@@ -13,7 +13,7 @@
         "cviebrock/eloquent-sluggable": "^7.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
-        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/guzzle": "^7.4",
         "jakub-onderka/php-console-color": "^0.2.0",
         "jakub-onderka/php-console-highlighter": "^0.4.0",
         "laravel/framework": "^7.0",
